@@ -1,0 +1,91 @@
+ <!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+	<base href='/'></base>
+       <title>India Meets</title>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+</head>
+<body ng-controller="mainCtrl as main">
+
+<header>
+<div class="navbar-fixed">
+	<nav class="teal darken-4 fixed red-text" role="navigation">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo"> &nbsp &nbsp India Meets</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        		<li ng-if="main.loggedIn"><a href="/addevent">Add event</a></li>
+				<!-- <li ><a href="/displayevents">Events</a></li> -->
+				<li ng-if="!main.loggedIn"><a href="/" ng-click="openModal()">Login</a></li>
+				<li ng-if="!main.loggedIn"><a href="/signup">Signup</a></li>
+				<!-- <li ng-if="main.loggedIn"><a href="#">Hello {{ main.user.username }}</a></li> -->
+				<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet" style="height:100%;">
+    <div class="modal-content">
+      <h3 class="thin red-text center-align">Login</h3>
+      
+      <div class="row">
+      	
+
+      	<div class="input-field col s6">
+          <input id="username" type="text" class="validate" ng-model="main.loginData.username">
+          <label for="username">Username</label>
+        </div>
+
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate" ng-model="main.loginData.password">
+          <label for="password">Password</label>
+        </div>
+
+      </div>
+      
+      <div>	
+      <a class="waves-effect waves-light btn-large red darken-2" style="margin-left:550px;" ng-click="main.doLogin()"><i class="mdi-content-send right"></i>Submit</a>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+	<div ng-view></div>
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-resource.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+	
+
+<script type="text/javascript" src="app/services/authservice.js"></script>
+<script type="text/javascript" src="app/services/userservice.js"></script>
+<script type="text/javascript" src="app/services/storyservice.js"></script>
+
+
+<script type="text/javascript" src="app/controllers/mainCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/userCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/storyCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/eventCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/displayCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/sponsorCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/viewCtrl.js"></script>
+
+
+<script type="text/javascript" src="app/app.routes.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+
+
+</body>
+</html>

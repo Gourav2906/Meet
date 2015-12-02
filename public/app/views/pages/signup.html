@@ -1,0 +1,44 @@
+<div class="card large" style="margin-top:30px;">
+	<div class="container" ng-controller="UserCreateController as user">
+		<div class="row">
+				<h1 class="center thin grey-text">Signup</h1>
+		</div>
+				<!-- <form  class="form-sigin" method="post" ng-submit="user.signupUser()">
+					Name: <input type="text" name="name" class="form-control" ng-model="user.userData.name">
+					Username: <input type="text" name="username" class="form-control" ng-model="user.userData.username">
+					Password: <input type="password" name="password" class="form-control" ng-model="user.userData.password">
+					<button type="submit" class="btn btn-danger">Signup</button>
+				</form> -->
+
+			<div class="row">
+				<div class="input-field">
+					<input id="fullname" type="text" class="validate" ng-model="user.userData.name">
+					<label for="fullname">Full Name</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field">
+					<input id="username" type="text" class="validate" ng-model="user.userData.username">
+					<label for="username">Username</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="input-field">
+					<input id="password" type="password" class="validate" ng-model="user.userData.password">
+					<label for="password">Password</label>
+				</div>
+			</div>
+
+			<div class="row">
+				<a class="btn btn-danger btn-large waves-effect waves-light" ng-click="user.signupUser()">Signup</a>
+			</div>
+	</div>
+</div>
+
+
+
+
+
+ 

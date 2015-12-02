@@ -1,0 +1,231 @@
+	<style>
+
+	.eventheading {
+		width: 100%;
+		height: 420px;
+		border-radius: 5px;
+	}
+
+	.br100 {
+		border-radius: 100px;
+		-moz-transition:linear 5s;
+	}
+
+	.wd90 {
+		width: 90%;
+	}
+
+	</style>
+
+
+	<script>
+		$(document).ready(function() {
+			console.log('maps to be initialized');
+			var map;
+		    var geocoder;
+		    var latitude,longitude;
+		    var address;
+		    var lati,longi;
+
+		    function InitializeMap() {
+
+		        var latlng = new google.maps.LatLng(-34.397, 150.644);
+		        var myOptions =
+		        {
+		            zoom: 8,
+		            center: latlng,
+		            mapTypeId: google.maps.MapTypeId.ROADMAP,
+		            disableDefaultUI: true
+		        };
+		        map = new google.maps.Map(document.getElementById("map"), myOptions);
+		    }
+
+		    function FindLocaiton() {
+		        geocoder = new google.maps.Geocoder();
+		        InitializeMap();
+
+		        var markeraddress = localStorage.getItem('clickedEventLocation');
+		        console.log(markeraddress);
+		        geocoder.geocode( { 'address': markeraddress}, function(results, status) {
+
+		          if (status == google.maps.GeocoderStatus.OK) {
+		             latitude = results[0].geometry.location.lat();
+		             longitude = results[0].geometry.location.lng();
+
+		             /*console.log(latitude + ' ' + longitude);*/
+		             console.log(typeof(latitude) + ' ' + typeof(longitude));
+		             lati = latitude.toString();
+		             longi = longitude.toString();
+		          } 
+		        });
+
+		        address = lati + ' ' + longi;
+		        console.log(address);
+		        geocoder.geocode({ 'address': address }, function (results, status) {
+		            if (status == google.maps.GeocoderStatus.OK) {
+		                map.setCenter(results[0].geometry.location);
+		                var marker = new google.maps.Marker({
+		                    map: map,
+		                    position: results[0].geometry.location
+		                });
+
+		            }
+		            else {
+		                alert("Geocode was not successful for the following reason: " + status);
+		            }
+		        });
+		    }
+
+		    FindLocaiton();
+
+		});
+	</script>
+
+</head>
+
+<div ng-controller="viewCtrl" ng-init="init()">
+	<!-- <h1 class="center-align white-text thin" style="padding:15px;"> {{ clickedEvent.name }} </h1> -->
+	<div class="row wd90">
+		<img ng-src="{{clickedEvent.imagepath}}" class="eventheading">
+	</div>
+	
+
+
+	<div class="row wd90">
+	    <div class="col s12">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#" ng-click="homeTabClick()" id="home">Home</a></li>
+	        <li class="tab col s3"><a href="#" ng-click="membersTabClick()" id="members">Members</a></li>
+	        <li class="tab col s3"><a href="#" ng-click="sponsorsTabClick()" id="sponsors">Sponsors</a></li>
+	        <li class="tab col s3"><a href="#" ng-click="photosTabClick()" id="photos">Photos</a></li>
+	      </ul>
+	    </div>
+	    <!-- <div ng-if="homeClicked()" class="col s12">Home</div>
+	    <div ng-if="membersClicked()" class="col s12">Members</div>
+	    <div ng-if="sponsorsClicked()" class="col s12">Sponsors</div>
+	    <div ng-if="photosClicked()" class="col s12">Photos</div> -->
+	</div>
+
+	<div class="row wd90">
+		
+		<!-- below div is the left block of the page -->
+		<div class="col s3">
+			<div class="card">
+				<div class="card-content">
+					<h4 class="thin"> {{ clickedEvent.location }} </h4>
+					<p class="thin">Date: {{ clickedEvent.date }} </p>
+					<br>
+					<hr style="color: white;background-color: white;">
+					<br>
+					<h5 class="thin">Current Members: 50</h5>
+					<br>
+					<hr style="color: white;background-color: white;">
+					<br>
+					<h4 class="thin">Organizer:</h4>
+					<div class="row">
+						<div class="col s2"><img src="#"></div>
+						<div class="col s10"><p class="thin"> {{ clickedEvent.creator }} </p></div>
+					</div>
+					<hr style="color: white;background-color: white;">
+					<br>
+					<h5 class="thin">We're About:</h5>
+					<div class="row">
+						<div class="col s6">
+							<div class="chip">
+								NodeJS
+							</div>
+						</div>
+						<div class="col s6">
+							<div class="chip">
+								AngularJS
+							</div>
+						</div>
+						<!-- and many more by ng-repeat -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- below div is the main central block where all the tabs data will be displayed -->
+		<div class="col s6">
+			<div class="card">
+				<div class="card-content">
+
+					<div ng-if="homeClicked()">
+						<h2 class="blue-grey-text"> {{ clickedEvent.name }} </h2>
+						<p> {{ clickedEvent.description }} </p>
+
+						<div id="map"></div>
+
+					</div>
+
+					<div ng-if="membersClicked()">
+						
+					</div>
+
+					<div ng-if="sponsorsClicked()">
+						
+					</div>
+
+					<div ng-if="photosClicked()">
+						
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="col s3">
+			<div class="card">
+				<div class="card-content">
+					<h4 class="green-text">Want to go ?</h4>
+					<br>
+					<a class="waves-effect waves-light btn-large red darken-2" style="margin-left:22px;">Join & RSVP<i class="mdi-content-send right"></i></a>
+					<br>
+					<br>
+					<hr style="color: white;background-color: white;">
+					<h3 class="thin">10 going</h3>
+					<ul class="collection">
+					    <li class="collection-item avatar">
+					      <img src="images/yuna.jpg" alt="" class="circle">
+					      <span class="title">Title</span>
+					      <p>First Line <br>
+					         Second Line
+					      </p>
+					      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+					    </li>
+					    <li class="collection-item avatar">
+					      <i class="material-icons circle">folder</i>
+					      <span class="title">Title</span>
+					      <p>First Line <br>
+					         Second Line
+					      </p>
+					      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+					    </li>
+					    <li class="collection-item avatar">
+					      <i class="material-icons circle green">insert_chart</i>
+					      <span class="title">Title</span>
+					      <p>First Line <br>
+					         Second Line
+					      </p>
+					      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+					    </li>
+					    <li class="collection-item avatar">
+					      <i class="material-icons circle red">play_arrow</i>
+					      <span class="title">Title</span>
+					      <p>First Line <br>
+					         Second Line
+					      </p>
+					      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+					    </li>
+					  </ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>
+
+

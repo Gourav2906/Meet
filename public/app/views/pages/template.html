@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div ng-controller="joinCtrl" class="center-align">
+<h1 class="thin green-text"> Name of Event - {{clickedEvent.name}} </h1>
+<br>
+<h2 class="thin green-text"> Category of Event - {{clickedEvent.category}} </h2>
+<br>
+<h3 class="thin green-text"> Number of Members - {{clickedEvent.members}} </h3>
+<br>
+<button class="waves-effect waves-light btn red darken-2" ng-click="joinEvent()">Join Event</button>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="event_template.js"></script>
+</body>
+</html>

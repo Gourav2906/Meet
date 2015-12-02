@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+	<base href='/'></base>
+       <title>India Meets</title>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-resource.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+	
+
+<script type="text/javascript" src="app/services/authservice.js"></script>
+<script type="text/javascript" src="app/services/userservice.js"></script>
+<script type="text/javascript" src="app/services/storyservice.js"></script>
+
+
+<script type="text/javascript" src="app/controllers/mainCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/userCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/storyCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/eventCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/displayCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/joinCtrl.js"></script>
+<script type="text/javascript" src="app/controllers/sponsorCtrl.js"></script>
+
+
+<script type="text/javascript" src="app/app.routes.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+
+</head>
+<body ng-controller="mainCtrl as main">
+
+<header>
+
+	<nav class="teal darken-4 red-text" role="navigation">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo"> &nbsp &nbsp India Meets</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        		<li ng-if="main.loggedIn"><a href="/addevent">Add event</a></li>
+				<!-- <li ><a href="/displayevents">Events</a></li> -->
+				<li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+				<li ng-if="!main.loggedIn"><a href="/signup">Signup</a></li>
+				<li ng-if="main.loggedIn"><a href="#">Hello {{ main.user.username }}</a></li>
+				<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+</header>
+
+	<div ng-view></div>
+
+</body>
+</html>

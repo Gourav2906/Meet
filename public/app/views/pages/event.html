@@ -1,0 +1,107 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+          
+
+
+
+<!-- Jquery -->
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.modal-trigger').leanModal();
+    });
+
+</script> 
+    </head>
+
+<div  ng-controller="eventCtrl" ng-init="blah()" ng-if="main.loggedIn" >
+
+        <h4 class="center thin red-text">Create an event</h4>
+
+        <div class="row">
+            <form class="col s12">
+
+                <div class="row">
+
+                    <div class="input-field col s6 " >
+                        <input id="event_name" type="text" class="validate" ng-model="events.name">
+                        <label class="active" for="event_name">Name of the Event</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input id="location" type="text" class="validate" ng-model="events.location">
+                        <label class="active" for="location">Location</label>
+                    </div>
+
+                </div>
+
+                <div class="row"> 
+
+                    <div class="input-field col s6">
+                        <input id="event_date" type="text" class="validate" ng-model="events.date">
+                        <label class="active" for="event_date">Date</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input id="event_time" type="text" class="validate" ng-model="events.time">
+                        <label  class="active" for="event_time">Time</label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="input-field">
+                        <input id="event_description" type="text" class="validate" ng-model="events.description">
+                        <label class="active" for="event_description" class="center-align">Description</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field">
+                        <input id="picturepath" type="text" class="validate" ng-model="events.imagepath">
+                        <label class="active" for="picturepath">Enter image path</label>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    <div class="center-align">
+        <button class=" modal-action modal-close waves-effect waves-light btn red darken-2" ng-click="addEvent()">Create</button>
+    </div>
+    <br>
+<!-- 
+    <div class="navbar-fixed">
+
+<nav class="navbar-size navbar-height">
+    <div class="nav-wrapper purple lighten-1">
+        <a href="#!" class="brand-logo logo-fits"><h4><strong>India Meets</strong></h4></a>
+        <ul class="group-find">
+            <li><a href="#" class="group-font thin"> Find a group</a></li>
+            <li><a class="group-font thin modal-trigger" data-target="modal2"> Start a group</a></li>
+        </ul>
+
+        <ul class="right hide-on-med-and-down">
+            <button data-target="modal1" class="waves-effect waves-light btn red darken-2 nav-button-margin modal-trigger" id="signup">Sign Up</button>
+            <button class="waves-effect waves-light btn red darken-2 nav-button-margin" id="login">Login</button>
+        </ul>
+    </div>
+</nav>
+
+</div> -->
+
+</div>
+
+</html>
+
+
