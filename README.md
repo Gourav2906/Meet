@@ -1,2 +1,1 @@
-# IndiaMeets
-# Meet 
+# IndiaMeet
